@@ -1,0 +1,100 @@
+<!-- <div class="container-fluid">
+    <div style="color: rgb(128, 160, 41);">
+        <h1 style="text-align:left;">Genre Form</h1>
+    </div>
+    <div class="container" class="col-md-4">
+        <form [formGroup]="genreForm" method="post">
+            <div class="form-group">
+                <label class="col-md-8 control-label"><b>Genre Name:</b></label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="GenereName" placeholder="Enter GenereName" class="form-control" type="text"
+                            formControlName="GenereName">
+                    </div>
+                    <br>
+                    <button type="button"  class="col-md-6 btn btn-primary" (click)="addGenre()">Add</button>
+                    <button type="button"  class="col-md-6 btn btn-primary" (click)="updateGenere()">Edit</button>
+                </div>
+             </div>
+            <br>
+         </form>
+        <h3 style="color: black;"> Genre Details</h3>
+        <table class="table col-md-8" border="1">
+            <thead>
+                <tr style="background-color: #3e75b4;">
+                    <th colspan="1" style="color: white;">GenreId</th>
+                    <th colspan="1" style="color: white;">GenreName</th>
+                 </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let g of genre" style="background-color: white;">
+                    <td>{{g.genreId}}</td>
+                    <td>{{g.genereName}}</td>
+                    <td><button (click) ="editGenere(g.genreId)">Edit</button></td>
+                    <td><button (click) ="deleteGenere(g.genreId)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+
+<h1 align="center" class="text-success"><u>Music Album</u></h1><br>
+<body style="background-color: rgb(178, 209, 235);margin-left: 250px;margin-top: 100px;margin-right: 250px">
+  
+<h4>Available Genres:</h4>
+<div>
+ 	<select>
+    <option> Select </option>
+   	 	<option *ngFor="let n of getallgenre" [value]="n.GenereName">
+       {{n.genereName}}
+    </option>
+   </select>
+   <audio controls class="audioClass" id='songPlay'>
+    <source type="audio/mpeg">
+</audio>
+</div>
+</body>  
+
+<div class="container-fluid" align="center">
+    <div  style="color: rgb(128, 160, 41);">
+        <h1 style="text-align:center;">Genere Form</h1>
+    </div>
+    <div class="container" class="col-md-4">
+        <form [formGroup]="genreForm" method="post">
+            <div class="form-group">
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="GenereName" placeholder="Enter genereName" class="form-control" type="text"
+                          formControlName="GenereName">
+                  </div>
+                  <br>
+                  <button type="button"  class="button button1" (click)="addGenre()">Add</button>
+                  <button type="button"  class="button button2" (click)="updateGenere()">Update</button>
+                   <br>
+               </div>
+            </div>
+            <br>
+        </form>
+    </div>
+    <table class="table" border="1">
+        <thead>
+            <tr style="background-color: #3e75b4;">
+                <th colspan="1" style="color: white;">genreId</th>
+                <th colspan="1" style="color: white;">genereName</th>
+                <th colspan="1" style="color: white;">Edit</th>
+                <th colspan="1" style="color: white;">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of getallgenre" style="background-color: white;">
+                <td>{{e.genreId}}</td>
+                <td>{{e.genereName}}</td>
+                <td><button class="button button1" (click) ="editGenere(e.genreId)">Edit</button></td>
+                <td><button class="button button3" (click) ="deleteGenre(e.genreId)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>

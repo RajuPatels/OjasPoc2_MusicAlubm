@@ -1,0 +1,113 @@
+<!-- <div>
+  <label> MasterMusic</label>
+  <select>
+    <option>Select</option>
+    <option *ngFor="let m of getmusic" [value]="m.musicId">
+      {{m.genreId}}
+	</option>
+	</select>
+</div>
+<div>
+	<label>Albums</label>
+	<select>
+	  <option>Select</option>
+	 	<option *ngFor="let n of getallalbums" [value]="n.albumId">
+		  {{n.albumId}}
+		</option>
+	</select>
+  </div> -->
+  <!-- <table class="table" border="2">
+    <thead>
+        <tr style="background-color: #3e75b4;">
+            <th colspan="1" style="color: white;">AlbumId</th>
+            <th colspan="1" style="color: white;">AlbumName</th>
+            <th colspan="1" style="color: white;">Year</th>
+            <th colspan="1" style="color: white;">GenreId</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let el of getallalbums"
+            style="background-color: white;">
+            <td>{{el.albumId}}</td>
+            <td >{{el.albumName}}</td>
+            <td>{{el.year}}</td>
+            <td >{{el.genreId}}</td>
+        </tr>
+    </tbody>
+</table> <br><br>   -->
+
+
+<h1 align="center" class="text-success"><u>Music Album</u></h1><br>
+<!-- <h5 align="center"> <button onclick="addAlbums()" class="bg-success text-white">Add Albums</button> -->
+<body style="background-color: rgb(178, 209, 235);margin-left: 250px;margin-top: 100px;margin-right: 250px">
+  
+<h4>Available Albums:</h4>
+<div>
+ 	<select>
+    <option> Select </option>
+   	 	<option *ngFor="let n of getallalbums" [value]="n.albumName">
+       {{n.albumName}}
+    </option>
+   </select>
+   <audio controls class="audioClass" id='songPlay'>
+    <source type="audio/mpeg">
+</audio>
+</div>
+</body>  
+
+<div class="container-fluid" align="center">
+  <div  style="color: rgb(128, 160, 41);">
+      <h1 style="text-align:center;">AddAlbum Form</h1>
+  </div>
+  <div class="container" class="col-md-4">
+      <form [formGroup]="albumForm" method="post" (ngSubmit)="addAlbums()">
+          <div class="form-group">
+              <div class="col-md-4 inputGroupContainer">
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="AlbumName" placeholder="Enter AlbumName" class="form-control" type="text"
+                          formControlName="AlbumName">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="Year" placeholder="Enter Year" class="form-control" type="text"
+                        formControlName="Year">
+                </div>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input name="GenreId" placeholder="Enter GenreId" class="form-control" type="text"
+                      formControlName="GenreId">
+              </div>
+              <br>
+              <button type="button"  class="button button1" (click)="addAlbums()">Add</button>
+              <button type="button"  class="button button2" (click)="updateAlbums()">Update</button>
+                 
+              </div>
+          </div>
+          <br>
+      </form>
+  </div>
+  <table class="table" border="1">
+      <thead>
+          <tr style="background-color: #3e75b4;">
+              <th colspan="1" style="color: white;">AlbumId</th>
+              <th colspan="1" style="color: white;">AlbumName</th>
+              <th colspan="1" style="color: white;">Year</th>
+              <th colspan="1" style="color: white;">GenreId</th>
+              <th colspan="1" style="color: white;">Edit</th>
+              <th colspan="1" style="color: white;">Delete</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let e of getallalbums" style="background-color: white;">
+              <td>{{e.albumId}}</td>
+              <td>{{e.albumName}}</td>
+              <td>{{e.year}}</td>
+              <td>{{e.genreId}}</td>
+              <td><button class="button button1" (click) ="editAlbum(e.albumId)">Edit</button></td>
+              <td><button class="button button3" (click) ="deleteAlbum(e.albumId)">Delete</button></td>
+          </tr>
+      </tbody>
+  </table>
+</div>

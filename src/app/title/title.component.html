@@ -1,0 +1,69 @@
+<h1 align="center" class="text-success"><u>Music Album</u></h1><br>
+<body style="background-color: rgb(178, 209, 235);margin-left: 250px;margin-top: 100px;margin-right: 250px">
+  
+<h4>Available Titles:</h4>
+<div>
+ 	<select (change)="changeSong($event)">
+    <option > Select </option>
+   	 	<option *ngFor="let n of getalltitles" [value]="n.titleId">
+       {{n.titleName}}
+    </option>
+   </select>
+                 <div>
+                    <audio controls>
+                        <source [src]="audioResult" type="audio/ogg">
+                      </audio>
+                </div>
+</div>
+</body>  
+
+<div class="container-fluid" align="center">
+    <div  style="color: rgb(128, 160, 41);">
+        <h1 style="text-align:center;">AddTitles Form</h1>
+    </div>
+    <div class="container" class="col-md-4">
+        <form [formGroup]="titleForm" method="post">
+            <div class="form-group">
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="TitleName" placeholder="Enter TitleName" class="form-control" type="text"
+                            formControlName="TitleName">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="AlbumId" placeholder="Enter AlbumId" class="form-control" type="text"
+                          formControlName="AlbumId">
+                  </div>
+                  <br>
+                  <button type="button"  class="button button1" (click)="addTitles()">Add</button>
+                  <button type="button"  class="button button2" (click)="updateTitles()">Update</button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+    <table class="table" border="1">
+        <thead>
+            <tr style="background-color: #3e75b4;">
+                <th colspan="1" style="color: white;">Audiofiles</th>
+                <th colspan="1" style="color: white;">AlbumId</th>
+                <th colspan="1" style="color: white;">TitleName</th>
+                <th colspan="1" style="color: white;">Edit</th>
+                <th colspan="1" style="color: white;">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of getalltitles" style="background-color: white;">
+                    <td> <audio controls>
+                    <source [src]="e.titleName" type="audio/ogg">
+                  </audio></td>
+                <td>{{e.albumId}}</td>
+                <td>{{e.titleName}}</td>
+                <td><button class="button button1" (click) ="editTitle(e.titleId)">Edit</button></td>
+                <td><button class="button button3" (click) ="deleteTitle(e.titleId)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+ 

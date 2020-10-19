@@ -1,0 +1,80 @@
+<h1 align="center" class="text-success"><u>Music Album</u></h1><br>
+<!-- <h5 align="center"> <button onclick="addAlbums()" class="bg-success text-white">Add Albums</button> -->
+<body style="background-color: rgb(178, 209, 235);margin-left: 250px;margin-top: 100px;margin-right: 250px">
+  
+<h4>Available Artists:</h4>
+<div>
+ 	<select>
+    <option> Select </option>
+   	 	<option *ngFor="let n of getallartists" [value]="n.artistName">
+       {{n.artistName}}
+    </option>
+   </select>
+   <audio controls class="audioClass" id='songPlay'>
+    <source type="audio/mpeg">
+</audio>
+</div>
+</body>  
+
+<div class="container-fluid" align="center">
+    <div  style="color: rgb(128, 160, 41);">
+        <h1 style="text-align:center;">AddArtists Form</h1>
+    </div>
+    <div class="container" class="col-md-4">
+        <form [formGroup]="artistForm" method="post">
+            <div class="form-group">
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input name="ArtistName" placeholder="Enter ArtistName" class="form-control" type="text"
+                            formControlName="ArtistName">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input name="Profession" placeholder="Enter Profession" class="form-control" type="text"
+                          formControlName="Profession">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="TitleId" placeholder="Enter TitleId" class="form-control" type="number"
+                        formControlName="TitleId">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input name="MusicdirectorName" placeholder="Enter MusicdirectorName" class="form-control" type="text"
+                        formControlName="MusicdirectorName">
+                </div>
+                <br>
+                <button type="button"  class="button button1" (click)="addArtists()">Add</button> 
+                <button type="button"  class="button button2" (click)="updateArtist()">Update</button>
+                </div>
+            </div>
+            <br>
+        </form>
+    </div>
+    <table class="table" border="1">
+        <thead>
+            <tr style="background-color: #3e75b4;">
+                <th colspan="1" style="color: white;">ArtistId</th>
+                <th colspan="1" style="color: white;">ArtistName</th>
+                <th colspan="1" style="color: white;">Profession</th>
+                <th colspan="1" style="color: white;">TitleId</th>
+                <th colspan="1" style="color: white;">MusicdirectorName</th>
+                <th colspan="1" style="color: white;">Edit</th>
+                <th colspan="1" style="color: white;">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of getallartists" style="background-color: white;">
+                <td>{{e.artistId}}</td>
+                <td>{{e.artistName}}</td>
+                <td>{{e.profession}}</td>
+                <td>{{e.titleId}}</td>
+                <td>{{e.musicdirectorName}}</td>
+                <td><button class="button button1" (click) ="editArtist(e.artistId)">Edit</button></td>
+                <td><button class="button button3" (click) ="deleteArtist(e.artistId)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
